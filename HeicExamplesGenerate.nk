@@ -1,0 +1,255 @@
+#! /Applications/Nuke12.1v1/Nuke12.1v1.app/Contents/MacOS/libnuke-12.1.1.dylib -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="23" w="1920" h="1077" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1257" stretch="1"/>
+            <splitter orientation="2">
+                <split size="620"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="437"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/alex/Desktop/HEIF_Test/HeicExamplesGenerate.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement OCIO
+ OCIO_config custom
+ customOCIOConfigPath /Applications/Nuke11.2v4/Nuke11.2v4.app/Contents/MacOS/plugins/OCIOConfigs/configs/aces_1.0.3/config.ocio
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut ACES/sRGB
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+}
+Read {
+ inputs 0
+ file_type exr
+ file /Projects/LegoNAB2014/images/target_ricd_macbeth.exr
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ colorspace default
+ name Read2
+ xpos 185
+ ypos -57
+}
+Dot {
+ name Dot2
+ xpos 219
+ ypos 73
+}
+set N1731ec00 [stack 0]
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_Rec2020-PQ.png"
+ colorspace "Output - Rec.2020 ST2084 (1000 nits)"
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ name Write3
+ xpos 312
+ ypos 114
+}
+push $N1731ec00
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_sRGB.jpg"
+ colorspace "Output - sRGB"
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ name Write4
+ xpos 185
+ ypos 117
+}
+Reformat {
+ inputs 0
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ name Reformat1
+ xpos 1030
+ ypos -36
+}
+Ramp {
+ p0 {0 0}
+ p1 {1919 0}
+ name Ramp1
+ xpos 1030
+ ypos 5
+}
+set N6fa53c00 [stack 0]
+Write {
+ file /Users/alex/Desktop/HEIF_Test/ramp_sRGB.jpg
+ colorspace "Output - sRGB"
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ name Write9
+ xpos 1030
+ ypos 81
+}
+push $N6fa53c00
+Write {
+ file /Users/alex/Desktop/HEIF_Test/ramp_Rec2020-PQ.png
+ colorspace "Output - Rec.2020 ST2084 (1000 nits)"
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ name Write10
+ xpos 1157
+ ypos 79
+}
+Read {
+ inputs 0
+ file_type exr
+ file /Projects/ACES/reference/DigitalLAD.2048x1556.exr
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ origset true
+ colorspace default
+ name Read3
+ xpos 453
+ ypos -59
+}
+Dot {
+ name Dot3
+ xpos 487
+ ypos 31
+}
+set N85f7b800 [stack 0]
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_sRGB.jpg"
+ colorspace "Output - sRGB"
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ name Write6
+ xpos 453
+ ypos 75
+}
+push $N85f7b800
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_Rec2020-PQ.png"
+ colorspace "Output - Rec.2020 ST2084 (1000 nits)"
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ name Write5
+ xpos 580
+ ypos 72
+}
+Read {
+ inputs 0
+ file_type exr
+ file /Users/alex/Downloads/syntheticChart.01.exr
+ format "2048 1080 0 0 2048 1080 1 2K_DCP"
+ origset true
+ colorspace default
+ name Read4
+ xpos 741
+ ypos -49
+}
+Dot {
+ name Dot4
+ xpos 775
+ ypos 41
+}
+set N85f7bc00 [stack 0]
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_sRGB.jpg"
+ colorspace "Output - sRGB"
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ name Write7
+ xpos 741
+ ypos 85
+}
+Read {
+ inputs 0
+ file_type exr
+ file /Users/alex/Developer/alexfry_aces-dev/images/aces/SonyF35.StillLife.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ colorspace default
+ name Read1
+ xpos -218
+ ypos -65
+}
+set N173b9c00 [stack 0]
+Dot {
+ name Dot1
+ xpos -184
+ ypos 82
+}
+set N1731fc00 [stack 0]
+Write {
+ file /Users/alex/Desktop/HEIF_Test/SonyF35.StillLife_sRGB.jpg
+ colorspace "Output - sRGB"
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ name Write1
+ xpos -218
+ ypos 126
+}
+push $N1731fc00
+Write {
+ file /Users/alex/Desktop/HEIF_Test/SonyF35.StillLife_Rec2020-PQ.png
+ colorspace "Output - Rec.2020 ST2084 (1000 nits)"
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ name Write2
+ xpos -91
+ ypos 123
+}
+push $N85f7bc00
+Write {
+ file "/Users/alex/Desktop/HEIF_Test/\[python nuke.thisNode().metadata('input/filename').split('/').pop(-1).split('.').pop(0)]_Rec2020-PQ.png"
+ colorspace "Output - Rec.2020 ST2084 (1000 nits)"
+ file_type png
+ datatype "16 bit"
+ checkHashOnRead false
+ name Write8
+ xpos 868
+ ypos 82
+}
+push $N173b9c00
+Viewer {
+ inputs 2
+ frame 1
+ frame_range 1-100
+ colour_sample_bbox {0.4150390625 -0.0576171875 0.416015625 -0.056640625}
+ viewerProcess "sRGB (ACES)"
+ name Viewer1
+ selected true
+ xpos -40
+ ypos -9
+}
