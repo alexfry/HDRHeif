@@ -1,7 +1,7 @@
 {
 	"general": {
 		"output": {
-			"file_path": "output.heic"
+			"file_path": "HeicExamples/target_ricd_macbeth_Rec2020-PQ.heic"
 		},
 		"brands": {
 			"major": "mif1",
@@ -10,13 +10,13 @@
 	},
 	"content": [{
 		"master": {
-			"file_path": "bitstream.265",
+			"file_path": "tempDir/target_ricd_macbeth_Rec2020-PQ.265",
 			"hdlr_type": "pict",
 			"code_type": "hvc1",
 			"encp_type": "meta"
 		},
 		"thumbs": [{
-			"file_path": "bitstream.thumb.265",
+			"file_path": "tempDir/target_ricd_macbeth_Rec2020-PQ_thumb.265",
 			"hdlr_type": "pict",
 			"code_type": "hvc1",
 			"encp_type": "meta",
