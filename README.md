@@ -3,3 +3,6 @@
 
  Basic script usage:
  `python quickHEIF_Wrap_v001.py sourceImages/ramp_Rec2020-PQ.png HeicExamples`
+
+ Requires:
+ `https://nokiatech.github.io/heif`
